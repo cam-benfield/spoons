@@ -1,5 +1,8 @@
 # custom
 devnotes/
+db.sqlite3
+/static
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -27,6 +30,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+*.pyc
+*~
 spoonsenv/
 
 # PyInstaller

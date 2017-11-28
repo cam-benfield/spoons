@@ -7,7 +7,16 @@ class User(models.Model):
     birthdate = models.DateTimeField('Birthdate')
     average_spoons = models.PositiveIntegerField()
 
-class Tasks(models.Model):
-    user_ref_key = User.user_key
+    def __str__(self):
+        return self.user_key
+
+    def create_user(self):
+        pass
+
+class Task(models.Model):
+    task_key = models.AutoField(primary_key=True)
     task = models.CharField(max_length=60)
     value = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.task_key
