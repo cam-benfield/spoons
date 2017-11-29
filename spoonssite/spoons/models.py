@@ -1,8 +1,18 @@
 from django.db import models
 
 class User(models.Model):
+    GENDER_CHOICES = (
+        ('FEMALE', 'Female'),
+        ('MALE', 'Male'),
+        ('OTHER', 'Other'),
+    )
+
     user_key = models.AutoField(primary_key=True)
     user_name = models.ForeignKey('auth.User')
+    user_gender = models.CharField(max_length=20,
+        choices=GENDER_CHOICES,
+        default = 'UNKNOWN'
+    )
     join_date = models.DateTimeField('Date Joined')
     birthdate = models.DateTimeField('Birthdate')
     average_spoons = models.PositiveIntegerField()
@@ -21,6 +31,7 @@ class Task(models.Model):
     )
 
     task_key = models.AutoField(primary_key=True)
+    task_user = models.ForeignKey('auth.User')
     task = models.CharField(max_length=20,
         choices=TASK_CHOICES,
         default = 'SHOWER'
