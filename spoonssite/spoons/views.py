@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Hello World! You're at the spoons index!")
+    return render(request, 'spoons/index.html')
 
 def task_list(request):
     return render(request, 'spoons/task_list.html')
