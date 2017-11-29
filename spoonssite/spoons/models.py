@@ -37,5 +37,6 @@ class SpoonTask(models.Model):
         default = 'None'
     )
     value = models.PositiveIntegerField()
+
     def __str__(self):
         return str(self.task_user) + '-' + self.task
