@@ -2,16 +2,16 @@ from django.db import models
 
 class SpoonUser(models.Model):
     GENDER_CHOICES = (
-        ('FEMALE', 'Female'),
-        ('MALE', 'Male'),
-        ('OTHER', 'Other'),
+        ('Female', 'Female'),
+        ('Male', 'Male'),
+        ('Other', 'Other'),
     )
 
     user_key = models.AutoField(primary_key=True)
     user_name = models.ForeignKey('auth.User')
     user_gender = models.CharField(max_length=20,
         choices=GENDER_CHOICES,
-        default = 'UNKNOWN'
+        default = 'Unknown'
     )
     join_date = models.DateTimeField('Date Joined')
     birthdate = models.DateTimeField('Birthdate')
@@ -37,6 +37,5 @@ class SpoonTask(models.Model):
         default = 'None'
     )
     value = models.PositiveIntegerField()
-
     def __str__(self):
-        return self.task
+        return str(self.task_user) + '-' + self.task

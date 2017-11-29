@@ -1,0 +1,11 @@
+{% extends 'spoons/base.html' %}
+
+{% block content %}
+    <div class="info">
+      <div class="task">
+        <h1><a href="{% url 'task_detail' pk=task.task_key %}">Task: {{task.task}}</a></h1>
+        <p>User: {{task.task_user}}</p>
+        <p>Value: {{task.value}}</a></p>
+      </div>
+    </div>
+{% endblock %}

@@ -1,29 +1,9 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends 'spoons/base.html' %}
 
-<html>
-  <head>
-    <title>BigSpoon</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-  </head>
-
-  <body>
-    <div>
-      <h1><a href='/index.html'>BigSpoon:</a></h1>
-      <h2>A spoons tracker for those with no spoons to waste.</h2>
-      <div>
-        <p>What started as a simple story has evolved into a new way of expressing chronic illness in a way that even small children can understand.</p>
-        <p>We aim to create a space that will allow people of all ages and illnesses to track their spoons, both in a positive (couting up) way and in a negative (counting down) way.</p>
-        <p>Join today to discover a new way of tracking your daily energy expenditures and work toward a better, more stable future.</p>
-      </div>
+{% block content %}
+    <div class="info">
+      <p>What started as a simple story has evolved into a new way of expressing chronic illness in a way that even small children can understand.</p>
+      <p>We aim to create a space that will allow people of all ages and illnesses to track their spoons, both in a positive (couting up) way and in a negative (counting down) way.</p>
+      <p>Join today to discover a new way of tracking your daily energy expenditures and work toward a better, more stable future.</p>
     </div>
-    <div>
-      <p>Look at the tasks you can track!</p>
-      <a href='/task_list.html'>Tasks</a>
-      <p>Look at our users!</p>
-      <a href='/user_list.html'>Users</a>
-    </div>
-  </body>
-</html>
+{% endblock %}

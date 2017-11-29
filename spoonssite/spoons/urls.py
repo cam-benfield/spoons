@@ -5,5 +5,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^index', views.index, name='index'),
     url(r'^task_list', views.task_list, name='tasks'),
+    url(r'^task/(?P<pk>\d+)/$', views.task_detail, name='task_detail'),
     url(r'^user_list', views.user_list, name='users'),
+    url(r'^user/(?P<pk>\d+)/$', views.user_detail, name='user_detail'),
 ]

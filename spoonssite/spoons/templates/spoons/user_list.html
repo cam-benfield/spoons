@@ -1,30 +1,16 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-  <head>
-    <title>BigSpoon</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-  </head>
+{% extends 'spoons/base.html' %}
 
-  <body>
-    <h1><a href='/index.html'>BigSpoon</a></h1>
-    <h2>A spoons tracker for those with no spoons to waste!</h2>
-    <div class="menu"> <!-- NOTE: Not necessary -->
-      <a href='/index.html'>Home</a>
-      <a href='/task_list.html'>Tasks</a
-    </div>
-    </legend>
-    <p>Here's a list of our Users:</p>
+{% block content %}
+    <h1>Here's a list of our Users:</h1>
     <div>
       {% for user in users %}
-        <div>
-          <p><strong>User: {{user.user_name}}</strong></p>
-          <p>Gender: {{user.user_gender}}</p>
-          <p>Birthdate: {{user.birthdate}}</p>
+        <div class="user">
+          <h1><a href="{% url 'user_detail' pk=user.user_key %}">{{user.user_name}}</a></h1>
+          <div class="info">
+            <p>Gender: {{user.user_gender}}</p>
+            <p>Birthdate: {{user.birthdate}}</p>
+          </div>
         </div>
       {% endfor %}
     </div>
-  </body>
-</html>
+{% endblock %}

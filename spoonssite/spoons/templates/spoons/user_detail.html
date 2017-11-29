@@ -1,0 +1,11 @@
+{% extends 'spoons/base.html' %}
+
+{% block content %}
+      <div class="user">
+        <h1><a href="{% url 'user_detail' pk=user.user_key %}">{{user.user_name}}</a></h1>
+        <div class="info">
+          <p>Gender: {{user.user_gender}}</p>
+          <p>Birthdate: {{user.birthdate}}</p>
+        </div>
+      </div>
+{% endblock %}

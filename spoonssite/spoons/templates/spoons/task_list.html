@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html>
-  <head>
-    <title>BigSpoon</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-  </head>
-  <body>
-    <h1><a href='/index.html'>BigSpoon</a></h1>
-    <legend>
-      <a href='/index.html'>Home</a>
-      <a href='/user_list.html'>Users</a>
-    </legend>
-    <p>Here's a list of our Tasks:</p>
+{% extends 'spoons/base.html' %}
+
+{% block content %}
     <div>
+      <h3>Here's a list of our Tasks:</h3>
       {% for task in tasks %}
-        <div>
-          <p><strong>Task: {{task.task}}</strong></p>
-          <p>Value: {{task.value}}</p>
+        <div class="task">
+          <h1><a href="{% url 'task_detail' pk=task.task_key%}">Task: {{task.task}}</h1>
+          <p>Value: {{task.value}}</a></p>
         </div>
       {% endfor %}
     </div>
-  </body>
-</html>
+{% endblock %}
