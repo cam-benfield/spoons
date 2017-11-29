@@ -22,19 +22,9 @@ class SpoonUser(models.Model):
 
 
 class SpoonTask(models.Model):
-    TASK_CHOICES = (
-        ('Shower', 'Shower'),
-        ('Brush Teeth', 'Brush Teeth'),
-        ('Do Homework', 'Do Homework'),
-        ('Brush Hair', 'Brush Hair'),
-        ('Get Dressed', 'Get Dressed'),
-    )
-
     task_key = models.AutoField(primary_key=True)
     task_user = models.ForeignKey('auth.User')
     task = models.CharField(max_length=20,
-        choices=TASK_CHOICES,
-        default = 'None',
     )
     value = models.PositiveIntegerField()
 

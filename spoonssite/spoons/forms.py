@@ -11,4 +11,4 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = SpoonUser
-        fields = ('user_name', 'user_gender', 'birthdate', 'average_spoons')
+        fields = ('user_name', 'user_gender', 'birthdate', 'average_spoons',)

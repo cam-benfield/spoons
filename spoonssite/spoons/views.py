@@ -24,8 +24,8 @@ def user_detail(request, pk):
     return render(request, 'spoons/user_detail.html', {'user': user})
 
 def task_new(request):
-    if request.method == "TASK":
-        form = TaskForm(request.TASK)
+    if request.method == "POST":
+        form = TaskForm(request.POST)
         if form.is_valid():
             task = form.save(commit=False)
             task.save()
@@ -35,8 +35,8 @@ def task_new(request):
     return render(request, 'spoons/task_new.html', {'form': form})
 
 def user_new(request):
-    if request.method == "USER":
-        form = UserForm(request.USER)
+    if request.method == "POST":
+        form = UserForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.save()

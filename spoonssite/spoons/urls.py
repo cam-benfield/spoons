@@ -8,6 +8,6 @@ urlpatterns = [
     url(r'^task/(?P<pk>\d+)/$', views.task_detail, name='task_detail'),
     url(r'^user_list', views.user_list, name='users'),
     url(r'^user/(?P<pk>\d+)/$', views.user_detail, name='user_detail'),
-    url(r'^task_new', views.task_new, name='task_new'),
-    url(r'^user_new', views.user_new, name='user_new')
+    url(r'^task/new/$', views.task_new, name='task_new'),
+    url(r'^user/new/$', views.user_new, name='user_new'),
 ]

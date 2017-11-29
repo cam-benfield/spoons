@@ -3,7 +3,7 @@
 {% block content %}
   <a href="{% url 'task_new' %}" class ""
     <div>
-      <h3>Here's a list of our Tasks:</h3>
+      <h1 class="list-title"><strong>Currently Tracked Tasks:</strong></h1>
       {% for task in tasks %}
         <div class="task">
           <h1><a href="{% url 'task_detail' pk=task.task_key%}">Task: {{task.task}}</a></h1>
