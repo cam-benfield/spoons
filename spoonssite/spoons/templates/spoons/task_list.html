@@ -5,8 +5,11 @@
       <h3>Here's a list of our Tasks:</h3>
       {% for task in tasks %}
         <div class="task">
-          <h1><a href="{% url 'task_detail' pk=task.task_key%}">Task: {{task.task}}</h1>
-          <p>Value: {{task.value}}</a></p>
+          <h1><a href="{% url 'task_detail' pk=task.task_key%}">Task: {{task.task}}</a></h1>
+          <div class="info">
+            <p>User: {{task.task_user}}</p>
+            <p>Value: {{task.value}}</p>
+          </div>
         </div>
       {% endfor %}
     </div>

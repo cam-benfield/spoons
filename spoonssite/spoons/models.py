@@ -13,8 +13,8 @@ class SpoonUser(models.Model):
         choices=GENDER_CHOICES,
         default = 'Unknown'
     )
-    join_date = models.DateTimeField('Date Joined')
-    birthdate = models.DateTimeField('Birthdate')
+    join_date = models.DateField(auto_now_add=True)
+    birthdate = models.DateField('Birthdate')
     average_spoons = models.PositiveIntegerField()
 
     def __str__(self):
@@ -34,7 +34,7 @@ class SpoonTask(models.Model):
     task_user = models.ForeignKey('auth.User')
     task = models.CharField(max_length=20,
         choices=TASK_CHOICES,
-        default = 'None'
+        default = 'None',
     )
     value = models.PositiveIntegerField()
 
