@@ -6,5 +6,14 @@
     <p>Yeah you.</p>
     <p>I mean it.</p>
     <a href='/index.html'>Home</a>
+    <p>Here's a list of our Tasks</p>
+    <div>
+      {% for task in tasks %}
+        <div>
+          <h2>Task: {{task.task}}</h2>
+          <p>Value: {{task.value}}</p>
+        </div>
+      {% endfor %}
+    </div>
   </body>
 </html>

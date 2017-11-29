@@ -7,8 +7,8 @@ def index(request):
     return render(request, 'spoons/index.html')
 
 def task_list(request):
-    tasks = Task.objects # NOTE: Make User Dynamic
-    return render(request, 'spoons/task_list.html')
+    tasks = Task.objects() # NOTE: Make User Dynamic
+    return render(request, 'spoons/task_list.html', {'tasks': tasks})
 
 def user_list(request):
     return render(request, 'spoons/user_list.html')
