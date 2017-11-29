@@ -1,16 +1,24 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Hey You!</title>
+    <title>BigSpoon</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <p>Yeah you.</p>
-    <p>I mean it.</p>
-    <a href='/index.html'>Home</a>
-    <p>Here's a list of our Tasks</p>
-    <div>
+    <h1><a href='/index.html'>BigSpoon</a></h1>
+    <legend>
+      <a href='/index.html'>Home</a>
+      <a href='/user_list.html'>Users</a>
+    </legend>
+    <p>Here's a list of our Tasks:</p>
+    <div class="pure-g">
       {% for task in tasks %}
-        <div>
-          <h2>Task: {{task.task}}</h2>
+        <div class="pure-u-1-2">
+          <p><strong>Task: {{task.task}}</strong></p>
           <p>Value: {{task.value}}</p>
         </div>
       {% endfor %}

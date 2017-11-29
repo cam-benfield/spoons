@@ -1,6 +1,6 @@
 from django.db import models
 
-class User(models.Model):
+class SpoonUser(models.Model):
     GENDER_CHOICES = (
         ('FEMALE', 'Female'),
         ('MALE', 'Male'),
@@ -21,20 +21,20 @@ class User(models.Model):
         return('%s' % self.user_name)
 
 
-class Task(models.Model):
+class SpoonTask(models.Model):
     TASK_CHOICES = (
-        ('SHOWER', 'Shower'),
-        ('BRUSH TEETH', 'Brush Teeth'),
-        ('DO HOMEWORK', 'Do Homework'),
-        ('BRUSH HAIR', 'Brush Hair'),
-        ('GET DRESSED', 'Get Dressed'),
+        ('Shower', 'Shower'),
+        ('Brush Teeth', 'Brush Teeth'),
+        ('Do Homework', 'Do Homework'),
+        ('Brush Hair', 'Brush Hair'),
+        ('Get Dressed', 'Get Dressed'),
     )
 
     task_key = models.AutoField(primary_key=True)
     task_user = models.ForeignKey('auth.User')
     task = models.CharField(max_length=20,
         choices=TASK_CHOICES,
-        default = 'SHOWER'
+        default = 'None'
     )
     value = models.PositiveIntegerField()
 
