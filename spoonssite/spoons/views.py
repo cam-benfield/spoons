@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils import timezone
 from .models import SpoonTask, SpoonUser
+from .forms import TaskForm, UserForm
 
 def index(request):
     return render(request, 'spoons/index.html')
@@ -21,3 +22,25 @@ def user_list(request):
 def user_detail(request, pk):
     user = SpoonUser.objects.get(pk=pk)
     return render(request, 'spoons/user_detail.html', {'user': user})
+
+def task_new(request):
+    if request.method == "TASK":
+        form = TaskForm(request.TASK)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.save()
+            return redirect('task_detail', pk=task.task_key)
+    else:
+        form = TaskForm()
+    return render(request, 'spoons/task_new.html', {'form': form})
+
+def user_new(request):
+    if request.method == "USER":
+        form = UserForm(request.USER)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.save()
+            return redirect('user_detail', pk=user.user_key)
+    else:
+        form = UserForm()
+    return render(request, 'spoons/user_new.html', {'form': form})
