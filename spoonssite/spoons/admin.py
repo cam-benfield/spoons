@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SpoonUser, SpoonTask
+from .models import SpoonProfile, SpoonTask
 
-admin.site.register(SpoonUser)
+admin.site.register(SpoonProfile)
 admin.site.register(SpoonTask)

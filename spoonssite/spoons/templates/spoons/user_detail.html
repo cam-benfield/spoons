@@ -2,12 +2,14 @@
 
 {% block content %}
       <div class="user">
-        <h1><a href="{% url 'user_detail' pk=user.user_key %}">{{user.user_name}}</a></h1>
+        <h1><a href="{% url 'user_detail' pk=user.user_key %}">{{user.username}}</a></h1>
         <div class="info">
           <p>Gender: {{user.user_gender}}</p>
           <p>Birthdate: {{user.birthdate}}</p>
           <p>Primary Key: {{user.user_key}}</p>
-          <p><a href="{% url 'task_query' pk=user.user_key %}">User Tasks</a></p>
-        </div>
+          <p>
+            <a href="{% url 'task_query' pk=user.user_key %}">{{user.username}}'s Tasks</a>
+          </p>
+          </div>
       </div>
 {% endblock %}

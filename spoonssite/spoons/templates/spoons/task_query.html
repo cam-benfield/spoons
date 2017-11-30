@@ -1,14 +1,14 @@
 {% extends 'spoons/base.html' %}
 
 {% block content %}
-    <h1>Tasks that {{user.user_name}} has Registered:</h1>
+    <h1>Tasks that {{user.username}} has Registered:</h1>
     <div>
       {% for task in tasks %}
         <div class="info">
           <div class="task">
             <h1><a href="{% url 'task_detail' pk=task.task_key %}">Task:{{task.task}}</a></h1>
             <p>User: {{task.task_user}}</p>
-            <p>Value: {{task.value}}</a></p>
+            <p>Value: {{task.value}}</p>
           </div>
         </div>
       {% endfor %}

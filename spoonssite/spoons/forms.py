@@ -1,5 +1,6 @@
 from django import forms
-from .models import SpoonTask, SpoonUser
+from .models import SpoonTask, SpoonProfile
+from django.contrib.auth.models import User
 
 class TaskForm(forms.ModelForm):
 
@@ -10,5 +11,11 @@ class TaskForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
 
     class Meta:
-        model = SpoonUser
-        fields = ('user_name', 'user_gender', 'birthdate', 'average_spoons',)
+        model = User
+        fields = ('first_name', 'last_name', 'email', 'username', 'password',)
+
+class ProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = SpoonProfile
+        fields = ('user_gender', 'birthdate', 'average_spoons', 'count_style',)

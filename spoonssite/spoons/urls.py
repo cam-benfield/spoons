@@ -10,6 +10,6 @@ urlpatterns = [
     url(r'^user/(?P<pk>\d+)/$', views.user_detail, name='user_detail'),
     url(r'^task/new/$', views.task_new, name='task_new'),
     url(r'^user/new/$', views.user_new, name='user_new'),
-    url(r'^user_query', views.user_query, name = 'user_query'),
-    url(r'^task_query', views.task_query, name = 'task_query'),
+    url(r'^task/(?P<pk>\d+)/user_query', views.user_query, name = 'user_query'),
+    url(r'^user/(?P<pk>\d+)/task_query', views.task_query, name = 'task_query'),
 ]

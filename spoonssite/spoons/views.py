@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.utils import timezone
-from .models import SpoonTask, SpoonUser
-from .forms import TaskForm, UserForm
+from .models import SpoonTask, SpoonProfile
+from .forms import TaskForm, ProfileForm, UserForm
 
 def index(request):
     return render(request, 'spoons/index.html')
@@ -27,31 +27,38 @@ def task_new(request):
         form = TaskForm()
     return render(request, 'spoons/task_new.html', {'form': form})
 
-def task_query(request):
-    userobj = SpoonUser.objects.get(user_key=pk)
-    un = userobj.user_name
-    tasks = SpoonTask.objects.get(task_user=un)
-    return render(request, 'task_query.html', {'tasks': tasks})
+def task_query(request, pk):
+    userobj = SpoonProfile.objects.filter(user_key=pk)
+    for item in userobj:
+        tasks = SpoonTask.objects.filter(task_user=item.username)
+    return render(request, 'spoons/task_query.html', {'tasks': tasks})
 
 # User Views
 def user_list(request):
-    users = SpoonUser.objects.all() # NOTE: Make User more Dynamic
+    users = SpoonProfile.objects.all() # NOTE: Make User more Dynamic
     return render(request, 'spoons/user_list.html', {'users': users})
 
 def user_detail(request, pk):
-    user = SpoonUser.objects.get(pk=pk)
+    user = SpoonProfile.objects.get(user_key=pk)
     return render(request, 'spoons/user_detail.html', {'user': user})
 
 def user_new(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-            return redirect('user_detail', pk=user.user_key)
+        user_form = UserForm(request.POST)
+        profile_form = ProfileForm(request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            usersv = user_form.save(commit=False)
+            profilesv = profile_form.save(commit=False)
+            user_form.save()
+            profile_form.save()
+            messages.success(request, _('Your profile has been added.'))
+            return redirect('user_detail', pk=profilesv.user_key)
     else:
-        form = UserForm()
-    return render(request, 'spoons/user_new.html', {'form': form})
+        user_form = UserForm()
+        profile_form = ProfileForm()
+    return render(request, 'spoons/user_new.html', {
+        'user_form': user_form,
+        'profile_form' : profile_form})
 
 def user_query(request, tk): # finds users who have the task
     users = SpoonTask.objects.filter(tk)
