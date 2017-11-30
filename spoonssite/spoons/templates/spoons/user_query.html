@@ -1,0 +1,16 @@
+{% extends 'spoons/base.html' %}
+
+{% block content %}
+    <h1>People who share this task:</h1>
+    <div>
+      {% for user in users %}
+        <div class="user">
+          <h1><a href="{% url 'user_detail' pk=user.user_key %}">{{user.user_name}}</a></h1>
+          <div class="info">
+            <p>Gender: {{user.user_gender}}</p>
+            <p>Birthdate: {{user.birthdate}}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+{% endblock %}

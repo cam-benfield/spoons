@@ -9,7 +9,7 @@ body {
 }
 
 .page-menu {
-    color: #FCA205;
+    color: #ffffff;
     font-family: 'Amatic SC';
 }
 
@@ -38,6 +38,7 @@ body {
   margin-right: 40px;
   background-color: #69D9FF;
   font-family: 'Josefin Sans';
+  font-size: 16pt;
 }
 
 h1, h2, h3, h4 {
