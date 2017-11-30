@@ -27,9 +27,10 @@ def task_new(request):
         form = TaskForm()
     return render(request, 'spoons/task_new.html', {'form': form})
 
-def task_query(request, user):
-    us = str(auth.User)
-    tasks = SpoonTask.objects.get(task_user=us)
+def task_query(request):
+    userobj = SpoonUser.objects.get(user_key=pk)
+    un = userobj.user_name
+    tasks = SpoonTask.objects.get(task_user=un)
     return render(request, 'task_query.html', {'tasks': tasks})
 
 # User Views

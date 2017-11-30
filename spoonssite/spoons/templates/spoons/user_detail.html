@@ -6,7 +6,8 @@
         <div class="info">
           <p>Gender: {{user.user_gender}}</p>
           <p>Birthdate: {{user.birthdate}}</p>
-          <p><a href="{% url 'task_query' user %}">User Tasks</a></p>
+          <p>Primary Key: {{user.user_key}}</p>
+          <p><a href="{% url 'task_query' pk=user.user_key %}">User Tasks</a></p>
         </div>
       </div>
 {% endblock %}
