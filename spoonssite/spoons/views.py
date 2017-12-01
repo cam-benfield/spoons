@@ -3,9 +3,13 @@ from django.http import HttpResponse
 from django.utils import timezone
 from .models import SpoonTask, SpoonProfile
 from .forms import TaskForm, ProfileForm, UserForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'spoons/index.html')
+
+def login(request):
+    return render(request, 'registration/login.html', )
 
 # Task Views
 def task_list(request):
@@ -16,6 +20,7 @@ def task_detail(request, pk):
     task = SpoonTask.objects.get(pk=pk)
     return render(request, 'spoons/task_detail.html', {'task': task})
 
+@login_required
 def task_new(request):
     if request.method == "POST":
         form = TaskForm(request.POST)
@@ -42,6 +47,7 @@ def user_detail(request, pk):
     user = SpoonProfile.objects.get(user_key=pk)
     return render(request, 'spoons/user_detail.html', {'user': user})
 
+@login_required
 def user_new(request):
     if request.method == "POST":
         user_form = UserForm(request.POST)
@@ -59,7 +65,3 @@ def user_new(request):
     return render(request, 'spoons/user_new.html', {
         'user_form': user_form,
         'profile_form' : profile_form})
-
-def user_query(request, tk): # finds users who have the task
-    users = SpoonTask.objects.filter(tk)
-    return render(request, '/user_query.html', {'users': users})

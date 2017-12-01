@@ -2,27 +2,29 @@
 
 {% block content %}
   <h1>New User</h1>
-  <form method="POST" class="user-form">{% csrf_token %}
-    {{user_form.as_p}}
-    {{profile_form.as_p}}
-    <div class='info'>
-      <ul>
-      <li>Most users begin with 20 spoons. You will be able to assign values to each daily task later, or you can play with the values until you're more comfortable with them.</li>
-      <li>
-        Your count style will determine how your data is presented to you.
+  <div class="profile-form">
+    <form method="POST" class="profile-form">{% csrf_token %}
+      {{user_form.as_p}}
+      {{profile_form.as_p}}
+      <div class='info'>
         <ul>
-          <li>
-            Count up - Adds spoons values together to show how much you accomplished. (Ideal for those who do not have set limitations on exercise/activity)
-          </li>
-          <li>
-            Count down - Subtracts spoons values from daily allotment to allow activity-restricted users to prioritize tasks. (Ideal for those with daily activity limitations)
-          </li>
-        </ul>
-      </li>
-      <li>
-        Whichever you choose, it is always changeable, and we will always support you.
-      </li>
-    </div>
-    <button type="submit" class="save btn btn-default">Submit</button>
-  </form>
+        <li>Most users begin with 20 spoons. You will be able to assign values to each daily task later, or you can play with the values until you're more comfortable with them.</li>
+        <li>
+          Your count style will determine how your data is presented to you.
+          <ul>
+            <li>
+              Count up - Adds spoons values together to show how much you accomplished. (Ideal for those who do not have set limitations on exercise/activity)
+            </li>
+            <li>
+              Count down - Subtracts spoons values from daily allotment to allow activity-restricted users to prioritize tasks. (Ideal for those with daily activity limitations)
+            </li>
+          </ul>
+        </li>
+        <li>
+          Whichever you choose, it is always changeable, and we will always support you.
+        </li>
+      </div>
+      <button type="submit" class="save btn btn-default">Submit</button>
+    </form>
+  </div>
 {% endblock %}

@@ -53,10 +53,11 @@ h1, h2, h3, h4 {
   float: right;
 }
 
-.user-form textarea, .user-form input, .task-form textarea, .task-form input{
+.profile-form, .profile-form textarea, .profile-form input, .task-form textarea, .task-form input {
   padding-left: 40px;
   padding-right: 40px;
   background-color: #69D9FF;
+
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
